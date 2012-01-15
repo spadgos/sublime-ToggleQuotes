@@ -4,7 +4,7 @@ ToggleQuotes is a [Sublime Text 2][sublime] plugin which lets you easily toggle 
 
 ### With Package Control ###
 
-If you have the [Package Control][package_control] package installed, you can install JSDocs from inside Sublime Text itself. Open the Command Palette and select "Package Control: Install Package", then search for ToggleQuotes and you're done!
+If you have the [Package Control][package_control] package installed, you can install ToggleQuotes from inside Sublime Text itself. Open the Command Palette and select "Package Control: Install Package", then search for ToggleQuotes and you're done!
 
 ### Without Package Control ###
 
@@ -18,20 +18,29 @@ Don't forget to keep updating it, though!
 
 Make one or more selections of strings including their quotes and then press the opposite quote mark. That is, if you have `"test"` press `'`, if you have `'test'`, press `"`.
 
-    Selection: "test"
-    Press:     '
-    Result:    'test'
+```javascript
+// With this selected:
+"test"
+// Press: '
+// Result is:
+'test'
+```
 
 Internal quotes are escaped, and already-escaped quotes are unescaped for you:
 
-    Selection: "hello 'world'"
-    Press:     '
-    Result:    'hello \'world\''
+```javascript
+// With this selected:
+"hello 'world'"
+// Press: '
+// Result is:
+'hello \'world\''
 
-    Selection: 'hello \'world\''
-    Press:     "
-    Result:    "hello 'world'"
-
+// With this selected:
+'hello \'world\''
+// Press: "
+// Result is:
+"hello 'world'"
+```
 
 If you have multiple selections which have different quote marks, you can toggle them all by pressing `Ctrl+'`
 
