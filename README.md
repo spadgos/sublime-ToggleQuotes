@@ -35,5 +35,14 @@ Internal quotes are escaped, and already-escaped quotes are unescaped for you:
 
 If you have multiple selections which have different quote marks, you can toggle them all by pressing `Ctrl+'`
 
+You can also toggle the quote marks of a string by simply putting your cursor inside the string and pressing `Ctrl+'`. The selection will expand to the entire string automatically.
+
+## Version History ##
+
+- **1.1.0** *January 15, 2012*
+  - Added `Ctrl+'` hotkey to expand to selection inside of strings.
+- **1.0.0** *November 8, 2011*
+  - First release
+
 [sublime]: http://www.sublimetext.com/
 [package_control]: http://wbond.net/sublime_packages/package_control

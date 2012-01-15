@@ -1,16 +1,29 @@
 import sublime_plugin
 import re
 import string
+from sublime import Region
+
+re_quotes = re.compile("^(['\"])(.*)\\1$")
 
 
 class ToggleQuotesCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         v = self.view
+        if v.sel()[0].size() == 0:
+            v.run_command("expand_selection", {"to": "scope"})
+
         for sel in v.sel():
             text = v.substr(sel)
-            res = re.match("^(['\"])(.*)\\1$", text)
+            res = re_quotes.match(text)
             if not res:
-                continue
+                #  the current selection doesn't begin and end with a quote.
+                #  let's expand the selection one character each direction and try again
+                sel = Region(sel.begin() - 1, sel.end() + 1)
+                text = v.substr(sel)
+                res = re_quotes.match(text)
+                if not res:
+                    #  still no match... skip it!
+                    continue
             oldQuotes = res.group(1)
             newQuotes = "'" if oldQuotes == '"' else '"'
             text = res.group(2)
@@ -20,10 +33,10 @@ class ToggleQuotesCommand(sublime_plugin.TextCommand):
             v.replace(edit, sel, text)
 
 
-# "te'st"
-# "te\"st"
-# 'test'
-# "te'st"
-# "te\"st"
-# 'te"st'
 # 'te\'st'
+# 'te"st'
+# 'test'
+# 'te\'st'
+# 'te"st'
+# "te\"st"
+# "te'st"

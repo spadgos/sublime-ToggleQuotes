@@ -18,5 +18,12 @@
             { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
             { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
         ]
+    },
+    { "keys": ["ctrl+'"], "command": "toggle_quotes", "context":
+        [
+            { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "string", "match_all": true}
+        ]
     }
 ]
