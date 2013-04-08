@@ -1,6 +1,5 @@
 import sublime_plugin
 import re
-import string
 from sublime import Region
 
 re_quotes = re.compile("^(['\"])(.*)\\1$")
@@ -27,8 +26,8 @@ class ToggleQuotesCommand(sublime_plugin.TextCommand):
             oldQuotes = res.group(1)
             newQuotes = "'" if oldQuotes == '"' else '"'
             text = res.group(2)
-            text = string.replace(text, newQuotes, "\\" + newQuotes)
-            text = string.replace(text, "\\" + oldQuotes, oldQuotes)
+            text = text.replace(newQuotes, "\\" + newQuotes)
+            text = text.replace("\\" + oldQuotes, oldQuotes)
             text = newQuotes + text + newQuotes
             v.replace(edit, sel, text)
 
