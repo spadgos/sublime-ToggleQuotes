@@ -1,4 +1,4 @@
-ToggleQuotes is a [Sublime Text 2][sublime] plugin which lets you easily toggle quote marks in your code.
+ToggleQuotes is a [Sublime Text][sublime] plugin which lets you easily toggle quote marks in your code.
 
 ## Installation ##
 
