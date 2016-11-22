@@ -2,11 +2,11 @@ import sublime_plugin
 import re
 from sublime import Region
 
-re_quotes = re.compile("^(['\"])(.*)\\1$")
+re_quotes = re.compile("^(['\"`])(.*)\\1$")
 
 
 class ToggleQuotesCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
+    def run(self, edit, **kwargs):
         v = self.view
         if v.sel()[0].size() == 0:
             v.run_command("expand_selection", {"to": "scope"})
@@ -24,7 +24,7 @@ class ToggleQuotesCommand(sublime_plugin.TextCommand):
                     #  still no match... skip it!
                     continue
             oldQuotes = res.group(1)
-            newQuotes = "'" if oldQuotes == '"' else '"'
+            newQuotes = kwargs["key"]
             text = res.group(2)
             text = text.replace(newQuotes, "\\" + newQuotes)
             text = text.replace("\\" + oldQuotes, oldQuotes)
@@ -39,3 +39,4 @@ class ToggleQuotesCommand(sublime_plugin.TextCommand):
 # 'te"st'
 # "te\"st"
 # "te'st"
+# `te"s't`
