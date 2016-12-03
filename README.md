@@ -8,7 +8,7 @@ If you have the [Package Control][package_control] package installed, you can in
 
 ### Without Package Control ###
 
-Go to your Sublime Text 2 Packages directory and clone the repository using the command below:
+Go to your Sublime Text 2/3 Packages directory and clone the repository using the command below:
 
     git clone https://github.com/spadgos/sublime-ToggleQuotes.git ToggleQuotes
 
@@ -48,6 +48,8 @@ You can also toggle the quote marks of a string by simply putting your cursor in
 
 ## Version History ##
 
+- **1.2.0** *December 2, 2016*
+  - Added ability to toggle backquotes by pressing `` ` `` with string selected, or `Ctrl+'` to cycle through quote types.
 - **1.1.0** *January 15, 2012*
   - Added `Ctrl+'` hotkey to expand to selection inside of strings.
 - **1.0.0** *November 8, 2011*
